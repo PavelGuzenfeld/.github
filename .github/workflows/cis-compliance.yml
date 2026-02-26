@@ -1,0 +1,25 @@
+name: CIS Compliance
+
+on:
+  schedule:
+    - cron: '0 10 * * 6'  # Saturday 10am UTC
+  workflow_dispatch:
+    inputs:
+      repos:
+        description: 'Specific repos to scan (comma-separated, empty=all)'
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  cis:
+    uses: PavelGuzenfeld/standard/.github/workflows/cis-org-compliance.yml@main
+    with:
+      org: PavelGuzenfeld
+      repos: ${{ inputs.repos || '' }}
+      create_tracking_issue: true
+    secrets:
+      app_id: ${{ secrets.CIS_APP_ID }}
+      app_private_key: ${{ secrets.CIS_APP_PRIVATE_KEY }}
