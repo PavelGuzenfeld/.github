@@ -1,0 +1,34 @@
+name: Python Quality
+
+on:
+  pull_request:
+    branches: [$default-branch]
+  workflow_dispatch:
+
+jobs:
+  python_quality:
+    uses: PavelGuzenfeld/standard/.github/workflows/python-quality.yml@5124380b19b12bea19b495fa0e043ec4fcc98668  # v0.14.1
+    permissions:
+      contents: read
+      pull-requests: write
+
+  sast_python:
+    uses: PavelGuzenfeld/standard/.github/workflows/sast-python.yml@5124380b19b12bea19b495fa0e043ec4fcc98668  # v0.14.1
+    with:
+      enable_semgrep: true
+      enable_pip_audit: true
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: write
+      security-events: write
+
+  infra_lint:
+    uses: PavelGuzenfeld/standard/.github/workflows/infra-lint.yml@5124380b19b12bea19b495fa0e043ec4fcc98668  # v0.14.1
+    with:
+      enable_shellcheck: true
+      enable_gitleaks: true
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: write

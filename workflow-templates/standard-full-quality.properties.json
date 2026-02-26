@@ -1,0 +1,7 @@
+{
+  "name": "Standard Full Quality (C++ + Python)",
+  "description": "Complete quality gates for C++ and Python: clang-tidy, cppcheck, ruff, Semgrep, pip-audit, ShellCheck, Hadolint, Gitleaks. Powered by PavelGuzenfeld/standard.",
+  "iconName": "standard-icon",
+  "categories": ["C++", "Python", "CMake", "quality", "security"],
+  "filePatterns": ["CMakeLists.txt", "pyproject.toml", "package.xml"]
+}

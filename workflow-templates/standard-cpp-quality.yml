@@ -1,0 +1,32 @@
+name: C++ Quality
+
+on:
+  pull_request:
+    branches: [$default-branch]
+  workflow_dispatch:
+
+jobs:
+  cpp_quality:
+    uses: PavelGuzenfeld/standard/.github/workflows/cpp-quality.yml@5124380b19b12bea19b495fa0e043ec4fcc98668  # v0.14.1
+    with:
+      docker_image: ''  # TODO: set your Docker image (e.g. ghcr.io/org/builder:latest)
+      enable_clang_format: true
+      enable_file_naming: true
+      enable_flawfinder: true
+    permissions:
+      actions: read
+      contents: read
+      packages: read
+      pull-requests: write
+      security-events: write
+
+  infra_lint:
+    uses: PavelGuzenfeld/standard/.github/workflows/infra-lint.yml@5124380b19b12bea19b495fa0e043ec4fcc98668  # v0.14.1
+    with:
+      enable_shellcheck: true
+      enable_hadolint: true
+      enable_gitleaks: true
+    permissions:
+      actions: read
+      contents: read
+      pull-requests: write

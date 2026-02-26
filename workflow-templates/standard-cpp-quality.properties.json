@@ -1,0 +1,7 @@
+{
+  "name": "Standard C++ Quality",
+  "description": "Diff-aware C++ quality gates: clang-tidy, cppcheck, clang-format, flawfinder, ShellCheck, Hadolint, Gitleaks. Powered by PavelGuzenfeld/standard.",
+  "iconName": "standard-icon",
+  "categories": ["C++", "CMake", "quality", "security"],
+  "filePatterns": ["CMakeLists.txt", "package.xml"]
+}

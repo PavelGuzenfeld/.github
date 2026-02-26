@@ -1,0 +1,7 @@
+{
+  "name": "Standard Python Quality",
+  "description": "Diff-aware Python quality gates: ruff, pytest, Semgrep, pip-audit, ShellCheck, Gitleaks. Powered by PavelGuzenfeld/standard.",
+  "iconName": "standard-icon",
+  "categories": ["Python", "quality", "security"],
+  "filePatterns": ["pyproject.toml", "setup.py", "requirements.txt"]
+}
