@@ -12,14 +12,17 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   cis:
     uses: PavelGuzenfeld/standard/.github/workflows/cis-org-compliance.yml@main
+    permissions:
+      contents: read
+      issues: write
     with:
       org: PavelGuzenfeld
       repos: ${{ inputs.repos || '' }}
       create_tracking_issue: true
     secrets:
-      app_id: ${{ secrets.CIS_APP_ID }}
-      app_private_key: ${{ secrets.CIS_APP_PRIVATE_KEY }}
+      scan_token: ${{ secrets.COMPLIANCE_BOT_TOKEN }}
