@@ -1,10 +1,14 @@
-name: Compliance Bot
+name: Compliance
 
 on:
   schedule:
-    - cron: '0 10 * * 1'  # Monday 10am UTC
+    - cron: '0 9 * * 1'  # Monday 9am UTC
   workflow_dispatch:
     inputs:
+      auto_update:
+        description: 'Open PRs to update drifted repos'
+        type: boolean
+        default: false
       dry_run:
         description: 'Dry run (no PRs opened)'
         type: boolean
@@ -14,10 +18,11 @@ permissions:
   contents: read
 
 jobs:
-  update:
-    uses: PavelGuzenfeld/standard/.github/workflows/compliance-bot.yml@main
+  compliance:
+    uses: PavelGuzenfeld/standard/.github/workflows/compliance.yml@main
     with:
       org: PavelGuzenfeld
+      auto_update: ${{ inputs.auto_update || false }}
       dry_run: ${{ inputs.dry_run || false }}
     secrets:
       bot_token: ${{ secrets.COMPLIANCE_BOT_TOKEN }}
