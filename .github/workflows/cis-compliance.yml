@@ -9,10 +9,6 @@ on:
         description: 'Specific repos to scan (comma-separated, empty=all)'
         type: string
         default: ''
-      max_repos:
-        description: 'Maximum number of repos to scan'
-        type: number
-        default: 100
 
 permissions:
   contents: read
@@ -27,7 +23,6 @@ jobs:
     with:
       org: PavelGuzenfeld
       repos: ${{ inputs.repos || '' }}
-      max_repos: ${{ inputs.max_repos || 100 }}
       create_tracking_issue: true
     secrets:
       scan_token: ${{ secrets.COMPLIANCE_BOT_TOKEN }}
