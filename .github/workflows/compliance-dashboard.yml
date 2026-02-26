@@ -1,0 +1,17 @@
+name: Compliance Dashboard
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Monday 9am UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  dashboard:
+    uses: PavelGuzenfeld/standard/.github/workflows/compliance-dashboard.yml@main
+    with:
+      org: PavelGuzenfeld
+    secrets:
+      bot_token: ${{ secrets.COMPLIANCE_BOT_TOKEN }}
